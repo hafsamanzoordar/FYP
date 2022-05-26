@@ -1,27 +1,27 @@
-const express  =  require('express'),  
-      app = express(),
-      dotenv = require ("dotenv"),
-      cookieParser = require('cookie-parser'),
-      mongoose              =  require("mongoose"),
-      passport              =  require("passport"),
-      bodyParser            =  require("body-parser"),
-      LocalStrategy         =  require("passport-local"),
-      passportLocalMongoose =  require("passport-local-mongoose"),
-      { response } = require('express'),
-      multer                =  require('multer'),  
-      path                  = require('path'),
-      cors                  = require('cors'),
+const express = require('express'),
+    app = express(),
+    dotenv = require("dotenv"),
+    cookieParser = require('cookie-parser'),
+    mongoose = require("mongoose"),
+    passport = require("passport"),
+    bodyParser = require("body-parser"),
+    LocalStrategy = require("passport-local"),
+    passportLocalMongoose = require("passport-local-mongoose"),
+    { response } = require('express'),
+    multer = require('multer'),
+    path = require('path'),
+    cors = require('cors'),
 
-      authRoutes            =  require("./routes/authRoutes"),
-      userRoutes            =  require("./routes/userRoutes"),
-      donationRoutes        =  require('./routes/donationRoutes'),
-      whiteCollarReqRoutes  = require('./routes/whiteCollarReqRoutes'),
-      janazaReqRoutes       = require('./routes/janazaReqRoutes'),
-      marketRoutes       = require('./routes/marketRoutes'),
-      Image                 = require('./models/image');
+    authRoutes = require("./routes/authRoutes"),
+    userRoutes = require("./routes/userRoutes"),
+    donationRoutes = require('./routes/donationRoutes'),
+    whiteCollarReqRoutes = require('./routes/whiteCollarReqRoutes'),
+    janazaReqRoutes = require('./routes/janazaReqRoutes'),
+    marketRoutes = require('./routes/marketRoutes'),
+    Image = require('./models/image');
 
 
-      const storage = multer.diskStorage({
+const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, './public/images')
     },
@@ -31,25 +31,25 @@ const express  =  require('express'),
     }
 })
 
-const upload = multer({storage:storage});
+const upload = multer({ storage: storage });
 
 //connect to mongodb and listen for requests
 const dbURI = 'mongodb+srv://admin:hafsa123@cluster0.xzwka.mongodb.net/?retryWrites=true&w=majority';
-mongoose.connect(dbURI) 
-    .then((result) => app.listen(8080))
+mongoose.connect(dbURI)
+    .then((result) => app.listen(3000))
     .catch((err) => console.log(err));
 
-    app.use(require("express-session")({
-        secret:"Any normal Word",//decode or encode session
-            resave: false,          
-            saveUninitialized:false    
-        }));
-        dotenv.config();
+app.use(require("express-session")({
+    secret: "Any normal Word",//decode or encode session
+    resave: false,
+    saveUninitialized: false
+}));
+dotenv.config();
 
 //register view engine
-app.set('view engine','ejs');
+app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded(
-    { extended:true }
+    { extended: true }
 ))
 
 //=======================
@@ -72,25 +72,25 @@ app.use('/api/janazaRequests', janazaReqRoutes);
 
 app.use('/api/markets', marketRoutes);
 
-app.use( (err, req, res, next) =>{
+app.use((err, req, res, next) => {
     const errorStatus = err.status || 500
     const errorMessage = err.message || "Something went wrong! "
     return res.status(errorStatus).json(errorMessage)
 })
 
-app.get("/", (req,res) =>{
+app.get("/", (req, res) => {
     res.render("home");
 })
 
-app.get("/api/userprofile",isLoggedIn ,(req,res) =>{
+app.get("/api/userprofile", isLoggedIn, (req, res) => {
     res.render("userProfile");
 })
 
-app.get("/api/account", (req,res) => {
+app.get("/api/account", (req, res) => {
     res.render("./donations/account");
 });
 
-app.post("/api/upload", upload.single("image"), (req,res) => {
+app.post("/api/upload", upload.single("image"), (req, res) => {
     console.log(req.file);
     const image = new Image({
         name: req.body.name,
@@ -102,44 +102,46 @@ app.post("/api/upload", upload.single("image"), (req,res) => {
         .then(result => {
             console.log(result);
             res.status(201).json({
-              message: "Image uploaded successfully",
-              uploadedImage: {
-                  donationImage: result.donationImage,
-                  _id: result._id,
-                  request: {
-                      type: 'GET',
-                      url: "http://localhost:3000/api/upload/" + result._id
-                  }
-              }
+                message: "Image uploaded successfully",
+                uploadedImage: {
+                    donationImage: result.donationImage,
+                    _id: result._id,
+                    request: {
+                        type: 'GET',
+                        url: "http://localhost:3000/api/upload/" + result._id
+                    }
+                }
             });
-          })
-          .catch(err => {
+        })
+        .catch(err => {
             console.log(err);
             res.status(500).json({
-              error: err
+                error: err
             });
-          });
-      });
+        });
+});
 
 
-app.get("/logout",(req,res)=>{
+app.get("/logout", (req, res) => {
     req.logout();
     res.redirect("/");
 });
 
-function isLoggedIn(req,res,next) {
-    if(req.isAuthenticated()){
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
         return next();
     }
     res.redirect("/login");
 }
 
 //Listen On Server
-app.listen(8080, 'localhost', (err) => {
-    if(err){
-        console.log(err);
-     }
-     else {
-     console.log("Server Started At Port 3000");  
-    }});
+// app.listen(3000, 'localhost', (err) => {
+//     if (err) {
+//         console.log(err);
+//     }
+//     else {
+//         console.log("Server Started At Port 3000");
+//     }
+// });
 
+module.exports = app;
