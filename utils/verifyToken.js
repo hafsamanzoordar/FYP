@@ -1,5 +1,5 @@
-const jwt = require ("jsonwebtoken");
-const createError = require('../utils/error');
+const jwt = require("jsonwebtoken");
+const createError = require("../utils/error");
 
 const verifyToken = (req, res, next) => {
   const token = req.cookies.access_token;
@@ -23,7 +23,7 @@ const verifyUser = (req, res, next) => {
     }
   });
 };
-  
+
 const verifyAdmin = (req, res, next) => {
   verifyToken(req, res, next, () => {
     if (req.user.isAdmin) {
@@ -34,9 +34,8 @@ const verifyAdmin = (req, res, next) => {
   });
 };
 
-
 module.exports = {
-    verifyToken,
-    verifyUser,
-    verifyAdmin,
-}
+  verifyToken,
+  verifyUser,
+  verifyAdmin,
+};
