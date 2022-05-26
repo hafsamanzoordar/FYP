@@ -36,7 +36,7 @@ const upload = multer({storage:storage});
 //connect to mongodb and listen for requests
 const dbURI = 'mongodb+srv://admin:hafsa123@cluster0.xzwka.mongodb.net/?retryWrites=true&w=majority';
 mongoose.connect(dbURI) 
-    .then((result) => app.listen(3000))
+    .then((result) => app.listen(8080))
     .catch((err) => console.log(err));
 
     app.use(require("express-session")({
