@@ -135,7 +135,7 @@ function isLoggedIn(req,res,next) {
 }
 
 //Listen On Server
-app.listen(3000, 'localhost', (err) => {
+app.listen(8080, 'localhost', (err) => {
     if(err){
         console.log(err);
      }
