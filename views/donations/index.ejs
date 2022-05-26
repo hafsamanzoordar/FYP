@@ -1,0 +1,18 @@
+<div class = "donations content">
+    
+    <h2>All Donations</h2>
+
+    <% if (donations.length > 0){ %>
+    <% donations.forEach(donation => { %>
+
+        <a class = "single" href="/donations/<%= donation._id %>">
+        <h3 class = "category"><%= donation.category %></h3>
+        <p class = "name"><%= donation.name %></p>
+        </a>
+
+    <% }) %>
+<% } else { %>
+    <p>There are no donations to display...</p>
+    <% } %>
+
+</div>

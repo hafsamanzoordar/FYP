@@ -1,0 +1,17 @@
+<div class = "donations content">
+    
+    <h2>All Janaza Requests</h2>
+
+    <% if (janazaRequests.length > 0){ %>
+    <% janazaRequests.forEach(request => { %>
+
+        <a class = "single" href="/requests/janazaRequests/<%= janazaRequest._id %>">
+        <p class = "full_name"><%= janazaRequest.full_name %></p>
+        </a>
+
+    <% }) %>
+<% } else { %>
+    <p>There are no requests to display...</p>
+    <% } %>
+
+</div>
