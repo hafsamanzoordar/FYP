@@ -21,7 +21,6 @@ const whiteCollarReqSchema = new mongoose.Schema(
     },
     age: {
       type: Number,
-      required: true,
     },
     phone: {
       type: Number,
@@ -30,12 +29,10 @@ const whiteCollarReqSchema = new mongoose.Schema(
     },
     email: {
       type: String,
-      required: true,
       unique: true,
     },
     DOB: {
       type: Date,
-      required: true,
     },
     address: {
       type: String,
@@ -45,7 +42,6 @@ const whiteCollarReqSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-
     fName: {
       type: String,
       required: true,
@@ -65,22 +61,11 @@ const whiteCollarReqSchema = new mongoose.Schema(
     },
     company_name: {
       type: String,
-      required: true,
-      unique: true,
-    },
-    occupation: {
-      type: String,
-      required: true,
-    },
-    designation: {
-      type: String,
-      required: true,
     },
     gross_monthly_income: {
       type: String,
       required: true,
     },
-
     matric_year: {
       type: Number,
       required: true,
@@ -95,13 +80,11 @@ const whiteCollarReqSchema = new mongoose.Schema(
     },
     matric_type: {
       type: String,
-      required: true,
     },
     matric_expenses: {
       type: Number,
       required: true,
     },
-
     intermediate_year: {
       type: Number,
       required: true,
@@ -116,13 +99,11 @@ const whiteCollarReqSchema = new mongoose.Schema(
     },
     intermediate_type: {
       type: String,
-      required: true,
     },
     intermediate_expenses: {
       type: Number,
       required: true,
     },
-
     family_members: {
       type: Number,
       required: true,
