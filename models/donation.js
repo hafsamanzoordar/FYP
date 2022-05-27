@@ -22,7 +22,6 @@ const donationSchema = new mongoose.Schema(
       unique: true,
     },
   },
-  //],},
   { timestamps: true }
 );
 
