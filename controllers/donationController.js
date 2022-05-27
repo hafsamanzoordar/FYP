@@ -10,10 +10,18 @@ const donation_index = async (req, res, next) => {
 };
 
 const donation_create_post = async (req, res) => {
-  const newDonation = new Donation(req.body);
+  console.log("request recieved");
   try {
-    const savedDonation = await newDonation.save();
-    res.status(200).json(savedDonation);
+    const newDonation = new Donation(req.body);
+    await newDonation
+      .save()
+      .then((res) => {
+        res.status(200).json(savedDonation);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    // console.log(savedDonation);
   } catch {
     (err) => {
       res.status(500).json(err);

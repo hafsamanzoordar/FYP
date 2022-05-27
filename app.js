@@ -30,11 +30,18 @@ const upload = multer({ storage: storage });
 //connect to mongodb and listen for requests
 const dbURI =
   "mongodb+srv://admin:hafsa123@cluster0.xzwka.mongodb.net/?retryWrites=true&w=majority";
+mongoose.Promise = global.Promise;
 mongoose
-  .connect(dbURI)
-  .then((result) => app.listen(3000))
-  .catch((err) => console.log(err));
-
+  .connect(dbURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Connected to Mongo");
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
 app.use(
   require("express-session")({
     secret: "Any normal Word", //decode or encode session
