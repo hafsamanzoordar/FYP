@@ -120,10 +120,6 @@ const whiteCollarReqSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    total_monthly_income: {
-      type: String,
-      required: true,
-    },
     property_type: {
       type: String,
       required: true,
