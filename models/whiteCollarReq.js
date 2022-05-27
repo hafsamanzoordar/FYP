@@ -63,11 +63,11 @@ const whiteCollarReqSchema = new mongoose.Schema(
       type: String,
     },
     gross_monthly_income: {
-      type: Number,
+      type: String,
       required: true,
     },
     matric_year: {
-      type: Number,
+      type: String,
       required: true,
     },
     matric_institute: {
@@ -82,11 +82,11 @@ const whiteCollarReqSchema = new mongoose.Schema(
       type: String,
     },
     matric_expenses: {
-      type: Number,
+      type: String,
       required: true,
     },
     intermediate_year: {
-      type: Number,
+      type: String,
       required: true,
     },
     intermediate_institute: {
@@ -101,7 +101,7 @@ const whiteCollarReqSchema = new mongoose.Schema(
       type: String,
     },
     intermediate_expenses: {
-      type: Number,
+      type: String,
       required: true,
     },
     family_members: {
@@ -117,11 +117,11 @@ const whiteCollarReqSchema = new mongoose.Schema(
       required: true,
     },
     total_expenditure: {
-      type: Number,
+      type: String,
       required: true,
     },
     total_monthly_income: {
-      type: Number,
+      type: String,
       required: true,
     },
     property_type: {
