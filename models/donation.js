@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 
 const donationSchema = new mongoose.Schema(
   {
+    category: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: true,
