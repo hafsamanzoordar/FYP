@@ -23,7 +23,7 @@ const whiteCollarReqSchema = new mongoose.Schema(
       type: Number,
     },
     phone: {
-      type: Number,
+      type: String,
       required: true,
       unique: true,
     },
@@ -63,7 +63,7 @@ const whiteCollarReqSchema = new mongoose.Schema(
       type: String,
     },
     gross_monthly_income: {
-      type: String,
+      type: Number,
       required: true,
     },
     matric_year: {
@@ -75,7 +75,7 @@ const whiteCollarReqSchema = new mongoose.Schema(
       required: true,
     },
     matric_percentage: {
-      type: Number,
+      type: String,
       required: true,
     },
     matric_type: {
@@ -94,7 +94,7 @@ const whiteCollarReqSchema = new mongoose.Schema(
       required: true,
     },
     intermediate_percentage: {
-      type: Number,
+      type: String,
       required: true,
     },
     intermediate_type: {
