@@ -51,6 +51,7 @@ const login = async (req, res, next) => {
         httpOnly: true,
       })
       .status(200)
+      .render("../views/userProfile.ejs")
       .json({ details: { ...otherDetails }, isAdmin });
   } catch (err) {
     next(err);
