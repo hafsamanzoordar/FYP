@@ -38,6 +38,7 @@ const updateDonation = async (req, res, next) => {
       { $set: req.body },
       { new: true }
     );
+    res.render("../views/donations/update.ejs");
     res.status(200).json(updatedDonation);
   } catch (err) {
     next(err);
