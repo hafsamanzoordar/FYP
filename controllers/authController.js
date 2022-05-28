@@ -52,7 +52,7 @@ const login = async (req, res, next) => {
       })
       .status(200);
 
-    info = res.json({ details: { ...otherDetails }, isAdmin });
+    const info = res.json({ details: { ...otherDetails }, isAdmin });
     res.render("../views/userProfile.ejs");
   } catch (err) {
     next(err);
