@@ -95,5 +95,4 @@ module.exports = {
   getByLocation,
   getByType,
   getMarket,
-  searchMarket,
 };
