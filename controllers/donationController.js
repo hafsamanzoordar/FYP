@@ -70,5 +70,5 @@ module.exports = {
   updateDonation,
   deleteDonation,
   getDonation,
-  update,
+  //update,
 };
