@@ -4,10 +4,24 @@ const getDonation = async (req, res) => {
   res.render("../views/donations/donation.ejs");
 };
 
+// const postDonation = async (req, res) => {
+//   try {
+//     const body = req.body;
+//     const donation = new Donation();
+//     donation = body;
+//     donation.save();
+//     console.log(donation);
+//     res.sendStatus(200);
+//   } catch (err) {
+//     console.log(err.message);
+//     res.send({ status: "error", message: "Request not processed" });
+//   }
+// };
+
 const donation_index = async (req, res, next) => {
   try {
-    const donation = await Donation.find();
-    res.status(200).json(donation);
+    const donations = await Donation.find();
+    res.status(200).json(donations);
   } catch (err) {
     next(err);
   }
@@ -65,4 +79,5 @@ module.exports = {
   updateDonation,
   deleteDonation,
   getDonation,
+  // postDonation,
 };
