@@ -15,14 +15,14 @@ const whiteCollarReqSchema = new mongoose.Schema(
       required: true,
     },
     cnic: {
-      type: String,
+      type: Number,
       required: true,
     },
     age: {
       type: Number,
     },
     phone: {
-      type: String,
+      type: Number,
       required: true,
     },
     email: {
@@ -44,7 +44,7 @@ const whiteCollarReqSchema = new mongoose.Schema(
       required: true,
     },
     fCnic: {
-      type: String,
+      type: Number,
       required: true,
     },
     status: {
@@ -59,11 +59,11 @@ const whiteCollarReqSchema = new mongoose.Schema(
       type: String,
     },
     gross_monthly_income: {
-      type: String,
+      type: Number,
       required: true,
     },
     matric_year: {
-      type: String,
+      type: Number,
       required: true,
     },
     matric_institute: {
@@ -71,18 +71,18 @@ const whiteCollarReqSchema = new mongoose.Schema(
       required: true,
     },
     matric_percentage: {
-      type: String,
+      type: Number,
       required: true,
     },
     matric_type: {
       type: String,
     },
     matric_expenses: {
-      type: String,
+      type: Number,
       required: true,
     },
     intermediate_year: {
-      type: String,
+      type: Number,
       required: true,
     },
     intermediate_institute: {
@@ -90,14 +90,14 @@ const whiteCollarReqSchema = new mongoose.Schema(
       required: true,
     },
     intermediate_percentage: {
-      type: String,
+      type: Number,
       required: true,
     },
     intermediate_type: {
       type: String,
     },
     intermediate_expenses: {
-      type: String,
+      type: Number,
       required: true,
     },
     family_members: {
@@ -113,7 +113,7 @@ const whiteCollarReqSchema = new mongoose.Schema(
       required: true,
     },
     total_expenditure: {
-      type: String,
+      type: Number,
       required: true,
     },
     property_type: {
