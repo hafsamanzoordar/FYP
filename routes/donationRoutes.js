@@ -11,7 +11,7 @@ router.get("/", verifyAdmin, donationController.donation_index);
 
 router.post("/", verifyUser, donationController.donation_create_post);
 
-router.get("/:id", verifyAdmin, donationController.donation_get_by_id);
+//router.get("/:id", verifyAdmin, donationController.donation_get_by_id);
 
 router.put("/:id", verifyAdmin, donationController.updateDonation);
 
