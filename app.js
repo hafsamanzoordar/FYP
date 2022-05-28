@@ -85,7 +85,7 @@ app.use((err, req, res, next) => {
   return res.status(errorStatus).json(errorMessage);
 });
 
-app.get("/api/userProfile", verifyUser, async (req, res) => {
+app.get("/api/userProfile", async (req, res) => {
   res.render("userProfile");
 });
 
