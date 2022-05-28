@@ -33,12 +33,11 @@ const donation_create_post = async (req, res) => {
 
 const updateDonation = async (req, res, next) => {
   try {
-    const updatedDonation = await Donation.findById(req.params.id);
-    //const updatedDonation = await Donation.findByIdAndUpdate(
-    //req.params.id,
-    //{ $set: req.body },
-    //{ new: true }
-    //);
+    const updatedDonation = await Donation.findByIdAndUpdate(
+      req.params.id,
+      { $set: req.body },
+      { new: true }
+    );
     res.render("../views/donations/update.ejs");
     res.status(200).json(updatedDonation);
   } catch (err) {
@@ -55,19 +54,19 @@ const deleteDonation = async (req, res, next) => {
   }
 };
 
-//const donation_get_by_id = async (req, res) => {
-//try {
-//const getDonation = await Donation.findById(req.params.id);
-//res.status(200).json(getDonation);
-//} catch (err) {
-//res.status(500).json(err);
-//}
-//};
+const donation_get_by_id = async (req, res) => {
+  try {
+    const getDonation = await Donation.findById(req.params.id);
+    res.status(200).json(getDonation);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
 
 module.exports = {
   donation_index,
   donation_create_post,
-  //donation_get_by_id,
+  donation_get_by_id,
   updateDonation,
   deleteDonation,
   getDonation,
