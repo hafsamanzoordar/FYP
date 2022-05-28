@@ -4,9 +4,9 @@ const getDonation = async (req, res) => {
   res.render("../views/donations/donation.ejs");
 };
 
-const update = async (req, res) => {
-  res.render("../views/donations/update.ejs");
-};
+//const update = async (req, res) => {
+//res.render("../views/donations/update.ejs");
+//};
 
 const donation_index = async (req, res, next) => {
   try {
@@ -38,6 +38,7 @@ const updateDonation = async (req, res, next) => {
       { $set: req.body },
       { new: true }
     );
+    res.render("../views/donations/update.ejs");
     res.status(200).json(updatedDonation);
   } catch (err) {
     next(err);
