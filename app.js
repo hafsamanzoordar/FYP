@@ -63,6 +63,18 @@ app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.render("home");
+});
+
+app.get("/api/auth/register", (req, res) => {
+  res.render("SignUp");
+});
+
+app.get("/api/auth/login", (req, res) => {
+  res.render("login");
+});
+
 app.use("/api/auth", authRoutes);
 
 app.use("/api/users", userRoutes);
@@ -79,10 +91,6 @@ app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;
   const errorMessage = err.message || "Something went wrong! ";
   return res.status(errorStatus).json(errorMessage);
-});
-
-app.get("/", (req, res) => {
-  res.render("home");
 });
 
 app.get("/api/userprofile", isLoggedIn, (req, res) => {
