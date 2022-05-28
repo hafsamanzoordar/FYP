@@ -33,11 +33,12 @@ const donation_create_post = async (req, res) => {
 
 const updateDonation = async (req, res, next) => {
   try {
-    const updatedDonation = await Donation.findByIdAndUpdate(
-      req.params.id,
-      { $set: req.body },
-      { new: true }
-    );
+    const updatedDonation = await Donation.findById(req.params.id);
+    //const updatedDonation = await Donation.findByIdAndUpdate(
+    //req.params.id,
+    //{ $set: req.body },
+    //{ new: true }
+    //);
     res.render("../views/donations/update.ejs");
     res.status(200).json(updatedDonation);
   } catch (err) {
