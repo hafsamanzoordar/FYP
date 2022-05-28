@@ -3,6 +3,8 @@ const router = express.Router();
 const donationController = require("../controllers/donationController");
 const { verifyUser, verifyAdmin } = require("../utils/verifyToken.js");
 
+router.get("/update", verifyAdmin, donationController.update);
+
 router.get("/getDonation", verifyUser, donationController.getDonation);
 
 router.get("/", verifyAdmin, donationController.donation_index);
