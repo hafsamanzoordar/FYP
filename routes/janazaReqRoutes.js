@@ -5,7 +5,11 @@ const { verifyUser, verifyAdmin } = require("../utils/verifyToken.js");
 
 router.get("/", verifyUser, janazaReqController.getjanazaReq);
 
-router.get("/", verifyAdmin, janazaReqController.janazaReq_index);
+router.get(
+  "/getJanazaRequests",
+  verifyAdmin,
+  janazaReqController.janazaReq_index
+);
 
 router.post("/", verifyUser, janazaReqController.janazaReq_create_post);
 

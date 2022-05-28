@@ -5,7 +5,7 @@ const { verifyUser, verifyAdmin } = require("../utils/verifyToken.js");
 
 router.get("/", verifyAdmin, marketController.getMarket);
 
-router.get("/", verifyUser, marketController.market_index);
+router.get("/getMarkets", verifyUser, marketController.market_index);
 
 router.get("/getByLocation", verifyUser, marketController.getByLocation);
 
