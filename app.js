@@ -67,14 +67,6 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
-app.get("/api/auth/register", (req, res) => {
-  res.render("SignUp");
-});
-
-app.get("/api/auth/login", (req, res) => {
-  res.render("login");
-});
-
 app.use("/api/auth", authRoutes);
 
 app.use("/api/users", userRoutes);
