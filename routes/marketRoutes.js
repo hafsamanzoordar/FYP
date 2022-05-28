@@ -3,9 +3,9 @@ const router = express.Router();
 const marketController = require("../controllers/marketController");
 const { verifyUser, verifyAdmin } = require("../utils/verifyToken.js");
 
-router.get("/", verifyAdmin, marketController.getMarket);
+router.get("/getMarket", verifyAdmin, marketController.getMarket);
 
-router.get("/getMarkets", verifyUser, marketController.market_index);
+router.get("/", verifyUser, marketController.market_index);
 
 router.get("/getByLocation", verifyUser, marketController.getByLocation);
 
