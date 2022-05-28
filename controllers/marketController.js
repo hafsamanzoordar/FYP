@@ -1,9 +1,5 @@
 const Market = require("../models/market");
 
-const searchMarket = async (req, res) => {
-  res.render("../views/marketSearch.ejs");
-};
-
 const getMarket = async (req, res) => {
   res.render("../views/market.ejs");
 };
