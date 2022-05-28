@@ -1,5 +1,9 @@
 const janazaReq = require("../models/janazaReq");
 
+const getjanazaReq = async (req, res) => {
+  res.render("../views/requests/janazaRequests/janaza.ejs");
+};
+
 const janazaReq_index = async (req, res, next) => {
   try {
     const janaza = await janazaReq.find();
@@ -60,4 +64,5 @@ module.exports = {
   janazaReq_get_by_id,
   updatejanazaReq,
   deletejanazaReq,
+  getjanazaReq,
 };
