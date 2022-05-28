@@ -50,8 +50,9 @@ const login = async (req, res, next) => {
       .cookie("access_token", token, {
         httpOnly: true,
       })
-      .status(200)
-      .json({ details: { ...otherDetails }, isAdmin });
+      .status(200);
+    const info = res.json({ details: { ...otherDetails }, isAdmin });
+    res.render("userProfile", { user: info });
   } catch (err) {
     next(err);
   }

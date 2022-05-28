@@ -85,7 +85,7 @@ app.use((err, req, res, next) => {
   return res.status(errorStatus).json(errorMessage);
 });
 
-app.get("/api/userprofile", isLoggedIn, (req, res) => {
+app.get("/api/userProfile", verifyUser, async (req, res) => {
   res.render("userProfile");
 });
 
@@ -129,10 +129,4 @@ app.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect("/login");
-}
 module.exports = app;
