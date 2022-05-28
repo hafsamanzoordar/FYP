@@ -45,7 +45,7 @@ const updateDonation = async (req, res, next) => {
   try {
     const updatedDonation = await Donation.findByIdAndUpdate(
       req.params.id,
-      res.render("../views/donations/donation.ejs"),
+      { $set: req.body },
       { new: true }
     );
     res.status(200).json(updatedDonation);
