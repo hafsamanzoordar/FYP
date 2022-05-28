@@ -40,11 +40,9 @@ const janazaReqSchema = new mongoose.Schema(
     },
     birthDate: {
       type: Date,
-      required: true,
     },
     deathDate: {
       type: Date,
-      required: true,
     },
     address: {
       type: String,
