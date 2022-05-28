@@ -8,8 +8,8 @@ const {
 
 const router = express.Router();
 
-router.get("/register/form", getRegister);
-router.get("/login/form", getLogin);
+router.get("/register", getRegister);
+router.get("/login", getLogin);
 router.post("/register", register);
 router.post("/login", login);
 
