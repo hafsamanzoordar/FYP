@@ -1,5 +1,9 @@
 const Request = require("../models/whiteCollarReq");
 
+const getCollarReq = async (req, res) => {
+  res.render("../views/requests/whiteCollarRequests/whiteCollar.ejs");
+};
+
 const whiteCollarReq_index = async (req, res, next) => {
   try {
     const whiteCollarReq = await Request.find();
@@ -60,4 +64,5 @@ module.exports = {
   whiteCollarReq_get_by_id,
   updatewhiteCollarReq,
   deletewhiteCollarReq,
+  getCollarReq,
 };

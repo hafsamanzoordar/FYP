@@ -1,5 +1,9 @@
 const Donation = require("../models/donation");
 
+const getDonation = async (req, res) => {
+  res.render("../views/donations/donation.ejs");
+};
+
 const donation_index = async (req, res, next) => {
   try {
     const donation = await Donation.find();
@@ -60,4 +64,5 @@ module.exports = {
   donation_get_by_id,
   updateDonation,
   deleteDonation,
+  getDonation,
 };

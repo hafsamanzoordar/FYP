@@ -3,6 +3,8 @@ const router = express.Router();
 const whiteCollarReqController = require("../controllers/whiteCollarReqController");
 const { verifyUser, verifyAdmin } = require("../utils/verifyToken.js");
 
+router.get("/", verifyUser, whiteCollarReqController.getCollarReq);
+
 router.get("/", verifyAdmin, whiteCollarReqController.whiteCollarReq_index);
 
 router.post(

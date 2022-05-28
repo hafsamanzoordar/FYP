@@ -1,8 +1,9 @@
 <h1>
     Janaza Fund Request Form
 </h1>
-<div class="janaza-request"></div>
-<form action="/requests" method="POST">
+<div class="white-collar-request"></div>
+
+<form action="https://fyp-2022.herokuapp.com/api/whiteCollarRequests" method="POST">
     
     <label for="full-name">Full Name</label>
     <input type="text" placeholder="full-name" id="xyz" name="full-name">
@@ -11,11 +12,11 @@
     <label for="program">Program Name</label>
     <input type="text" id="xyz" name="program">
     <label for="cnic">CNIC No</label>
-    <input type="number" id="xyz" name="cnic">
+    <input type="text" id="xyz" name="cnic">
     <label for="age">Age</label>
     <input type="number" id="xyz" name="age">
     <label for="phone">Phone No</label>
-    <input type="number" placeholder="phone" id="xyz" name="phone">
+    <input type="text" placeholder="phone" id="xyz" name="phone">
     <label for="email">Email</label>
     <input type="text" placeholder="email" id="xyz" name="email">
     <label for="DOB">Date of Birth</label>
@@ -33,7 +34,7 @@
     <label for="Fname">Father's Name</label>
     <input type="text" placeholder="Fname" id="xyz" name="Fname">
     <label for="fCnic">CNIC No</label>
-    <input type="number" id="xyz" name="fCnic">
+    <input type="text" id="xyz" name="fCnic">
     
     <select class="status" name="status">
 
@@ -52,19 +53,15 @@
 
     <label for="company_name">Company Name</label>
     <input type="text" placeholder="company_name" id="xyz" name="company_name">
-    <label for="occupation">Occupation</label>
-    <input type="text" placeholder="occupation" id="xyz" name="occupation">
-    <label for="designation">Designation</label>
-    <input type="text" placeholder="designation" id="xyz" name="designation">
     <label for="gross_monthly_income">Gross monthly income</label>
-    <input type="number" id="xyz" name="gross_monthly_income">
+    <input type="text" id="xyz" name="gross_monthly_income">
 
     <label for="matric_year">Matric Completion Year</label>
-    <input type="number" id="xyz" name="matric_year">
+    <input type="text" id="xyz" name="matric_year">
     <label for="matric_institute">Matric Institute Name</label>
     <input type="text" placeholder="matric_institute" id="xyz" name="matric_institute">
     <label for="matric_percentage">Matric Percentage</label>
-    <input type="number" id="xyz" name="matric_percentage">
+    <input type="text" id="xyz" name="matric_percentage">
 
     <select class="matric_type" name="matric_type">
 
@@ -74,15 +71,15 @@
     </select>
 
     <label for="matric_expenses">Matric Expenses</label>
-    <input type="number" id="xyz" name="matric_expenses">
+    <input type="text" id="xyz" name="matric_expenses">
 
 
     <label for="intermediate_year">Intermediate Completion Year</label>
-    <input type="number" id="xyz" name="intermediate_year">
+    <input type="text" id="xyz" name="intermediate_year">
     <label for="intermediate_institute">Intermediate Institute Name</label>
     <input type="text" placeholder="intermediate_institute" id="xyz" name="intermediate_institute">
     <label for="intermediate_percentage">Intermediate Percentage</label>
-    <input type="number" id="xyz" name="intermediate_percentage">
+    <input type="text" id="xyz" name="intermediate_percentage">
  
     <select class="intermediate_type" name="intermediate_type"></select>    
     <option name="" value="4" selected>Select Intermediate Institute type</option>
@@ -91,7 +88,7 @@
     </select>
 
     <label for="intermediate_expenses">Intermediate Expenses</label>
-    <input type="number" id="xyz" name="intermediate_expenses">
+    <input type="text" id="xyz" name="intermediate_expenses">
 
     <label for="family_members">Family Members</label>
     <input type="number" id="xyz" name="family_members">
@@ -100,9 +97,7 @@
     <label for="studying_siblings">Studying Siblings</label>
     <input type="number" id="xyz" name="studying_siblings">
     <label for="total_expenditure">Total Expenditure</label>
-    <input type="number" id="xyz" name="total_expenditure">
-    <label for="total_monthly_income">Total monthly income</label>
-    <input type="number" id="xyz" name="total_monthly_income">
+    <input type="text" id="xyz" name="total_expenditure">
 
     <select class="property_type" name="property_type"></select>    
     <option name="" value="5" selected>Select Property type</option>
@@ -114,6 +109,6 @@
 </form>
 </div>
 <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/SignUp">Sign Up</a></li>
+    <li><a href="https://fyp-2022.herokuapp.com/">Home</a></li>
+    <li><a href="https://fyp-2022.herokuapp.com/api/auth/register">Sign Up</a></li>
 </ul>
