@@ -9,17 +9,14 @@ const janazaReqSchema = new mongoose.Schema(
     cnic: {
       type: String,
       required: true,
-      unique: true,
     },
     phone: {
       type: String,
       required: true,
-      unique: true,
     },
     email: {
       type: String,
       required: true,
-      unique: true,
     },
     gender: {
       type: String,
@@ -36,7 +33,6 @@ const janazaReqSchema = new mongoose.Schema(
     dCnic: {
       type: String,
       required: true,
-      unique: true,
     },
     age: {
       type: Number,

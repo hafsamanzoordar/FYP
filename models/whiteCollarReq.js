@@ -17,7 +17,6 @@ const whiteCollarReqSchema = new mongoose.Schema(
     cnic: {
       type: String,
       required: true,
-      unique: true,
     },
     age: {
       type: Number,
@@ -25,11 +24,9 @@ const whiteCollarReqSchema = new mongoose.Schema(
     phone: {
       type: String,
       required: true,
-      unique: true,
     },
     email: {
       type: String,
-      unique: true,
     },
     DOB: {
       type: Date,
@@ -49,7 +46,6 @@ const whiteCollarReqSchema = new mongoose.Schema(
     fCnic: {
       type: String,
       required: true,
-      unique: true,
     },
     status: {
       type: String,

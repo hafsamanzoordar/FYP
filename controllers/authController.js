@@ -3,6 +3,14 @@ const bcrypt = require("bcryptjs");
 const createError = require("../utils/error");
 const jwt = require("jsonwebtoken");
 
+const getRegister = async (req, res) => {
+  res.render("SignUp");
+};
+
+const getLogin = async (req, res) => {
+  res.render("login");
+};
+
 const register = async (req, res, next) => {
   try {
     const salt = bcrypt.genSaltSync(10);
@@ -52,4 +60,6 @@ const login = async (req, res, next) => {
 module.exports = {
   register,
   login,
+  getRegister,
+  getLogin,
 };
