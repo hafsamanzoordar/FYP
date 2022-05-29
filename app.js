@@ -92,6 +92,10 @@ app.get("/api/adminDashboard", async (req, res) => {
 
 app.use("./public/images", express.static("images"));
 
+app.get("/api/upload", (req, res) => {
+  res.render("./views/donations/upload.ejs");
+});
+
 app.post("/api/upload", upload.single("image"), (req, res) => {
   console.log(req.file);
   const image = new Image({
