@@ -15,7 +15,7 @@ router.post("/", verifyUser, donationController.donation_create_post);
 
 router.get("/:id", verifyAdmin, donationController.donation_get_by_id);
 
-router.put("/:id", verifyAdmin, donationController.updateDonation);
+router.post("/:id", verifyAdmin, donationController.updateDonation);
 
 router.delete("/:id", verifyAdmin, donationController.deleteDonation);
 
