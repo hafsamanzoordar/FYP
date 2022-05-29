@@ -42,6 +42,7 @@ mongoose
   .catch((err) => {
     console.log(err.message);
   });
+
 app.use(
   require("express-session")({
     secret: "Any normal Word", //decode or encode session
