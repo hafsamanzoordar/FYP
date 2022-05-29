@@ -12,18 +12,18 @@ const express = require("express"),
   donationRoutes = require("./routes/donationRoutes"),
   whiteCollarReqRoutes = require("./routes/whiteCollarReqRoutes"),
   janazaReqRoutes = require("./routes/janazaReqRoutes"),
-  marketRoutes = require("./routes/marketRoutes"),
-  Image = require("./models/image");
+  marketRoutes = require("./routes/marketRoutes");
+//   Image = require("./models/image");
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "./public/images");
-  },
-  filename: (req, file, cb) => {
-    console.log(file);
-    cb(null, Date.now() + path.extname(file.originalname));
-  },
-});
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, "./public/images");
+//   },
+//   filename: (req, file, cb) => {
+//     console.log(file);
+//     cb(null, Date.now() + path.extname(file.originalname));
+//   },
+// });
 
 const upload = multer({ storage: storage });
 
@@ -90,42 +90,42 @@ app.get("/api/adminDashboard", async (req, res) => {
   res.render("adminDashboard");
 });
 
-app.use("./public/images", express.static("images"));
+// app.use("./public/images", express.static("images"));
 
-app.get("/api/upload", (req, res) => {
-  res.render("./views/donations/upload.ejs");
-});
+// app.get("/api/upload", (req, res) => {
+//   res.render("./views/donations/upload.ejs");
+// });
 
-app.post("/api/upload", upload.single("image"), (req, res) => {
-  console.log(req.file);
-  const image = new Image({
-    name: req.body.name,
-    _id: req.body._id,
-    donationImage: req.file.path,
-  });
-  image
-    .save()
-    .then((result) => {
-      console.log(result);
-      res.status(201).json({
-        message: "Image uploaded successfully",
-        uploadedImage: {
-          donationImage: result.donationImage,
-          _id: result._id,
-          request: {
-            type: "GET",
-            url: "https://fyp-2022.herokuapp.com/api/upload/" + result._id,
-          },
-        },
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({
-        error: err,
-      });
-    });
-});
+//app.post("/api/upload", upload.single("image"), (req, res) => {
+//console.log(req.file);
+//const image = new Image({
+//name: req.body.name,
+//_id: req.body._id,
+//donationImage: req.file.path,
+//});
+//image
+// .save()
+//     .then((result) => {
+//       console.log(result);
+//       res.status(201).json({
+//         message: "Image uploaded successfully",
+//         uploadedImage: {
+//           donationImage: result.donationImage,
+//           _id: result._id,
+//           request: {
+//             type: "GET",
+//             url: "https://fyp-2022.herokuapp.com/api/upload/" + result._id,
+//           },
+//         },
+//       });
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json({
+//         error: err,
+//       });
+//     });
+// });
 
 app.get("/logout", (req, res) => {
   req.logout();
