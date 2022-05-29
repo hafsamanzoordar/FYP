@@ -2,7 +2,6 @@ const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 const createError = require("../utils/error");
 const jwt = require("jsonwebtoken");
-const nodemon = require("nodemon");
 
 const getRegister = async (req, res) => {
   res.render("SignUp");
