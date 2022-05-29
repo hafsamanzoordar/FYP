@@ -46,15 +46,17 @@ const login = async (req, res, next) => {
     );
 
     const { password, isAdmin, ...otherDetails } = user._doc;
-    res
-      .cookie("access_token", token, {
-        httpOnly: false,
-        sameSite: "none",
-        secure: false,
-      })
-      .status(200)
+    // res
+    //   .cookie("access_token", token, {
+    //     httpOnly: false,
+    //     sameSite: "none",
+    //     secure: false,
+    //   })
+    //   .status(200)
 
-      .json({ details: { ...otherDetails }, isAdmin });
+    res
+      .json({ details: { ...otherDetails }, isAdmin, access_token: token })
+      .sendStatus(200);
   } catch (err) {
     next(err);
   }
