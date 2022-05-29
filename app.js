@@ -25,7 +25,7 @@ const express = require("express"),
 //   },
 // });
 
-const upload = multer({ storage: storage });
+// const upload = multer({ storage: storage });
 
 //connect to mongodb and listen for requests
 const dbURI =
