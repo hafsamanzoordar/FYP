@@ -39,7 +39,7 @@ const updateDonation = async (req, res, next) => {
       { $set: req.body },
       { new: true }
     );
-    res.status(200).render("../views/donations/update.ejs");
+    res.status(200).render(updatedDonation);
   } catch (err) {
     next(err);
   }
@@ -57,7 +57,7 @@ const deleteDonation = async (req, res, next) => {
 const donation_get_by_id = async (req, res) => {
   try {
     const getDonation = await Donation.findById(req.params.id);
-    res.status(200).json(getDonation);
+    res.status(200).render("../views/donations/update.ejs");
   } catch (err) {
     res.status(500).json(err);
   }
@@ -70,5 +70,5 @@ module.exports = {
   updateDonation,
   deleteDonation,
   getDonation,
-  //update,
+  update,
 };
