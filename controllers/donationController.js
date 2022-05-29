@@ -4,9 +4,10 @@ const getDonation = async (req, res) => {
   res.render("../views/donations/donation.ejs");
 };
 
-//const update = async (req, res) => {
-//res.render("../views/donations/update.ejs");
-//};
+const update = async (req, res) => {
+  const update_donation = new Donation.findById(req.params.id);
+  res.status(200).render("../views/donations/update.ejs");
+};
 
 const donation_index = async (req, res, next) => {
   try {
@@ -70,5 +71,5 @@ module.exports = {
   updateDonation,
   deleteDonation,
   getDonation,
-  //update,
+  update,
 };
