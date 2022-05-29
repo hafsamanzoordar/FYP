@@ -53,11 +53,45 @@ const deleteDonation = async (req, res, next) => {
     next(err);
   }
 };
+const approve_donation = async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    const donation = await Donation.findById(id);
+    if (donation) {
+      donation.status = "Approved";
+      console.log(donation);
+      donation.save();
+      return res.status(200);
+    } else {
+      return res.status(403);
+    }
+  } catch (error) {
+    console.log(error.message);
+    return res.sendStatus(403);
+  }
+};
+const decline_donation = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const donation = await Donation.findById(id);
+    if (donation) {
+      donation.status = "Declined";
+      donation.save();
+      return res.status(200);
+    } else {
+      return res.status(403);
+    }
+  } catch (error) {
+    console.log(error.message);
+    return res.sendStatus(403);
+  }
+};
 
 const donation_get_by_id = async (req, res) => {
   try {
     const getDonation = await Donation.findById(req.params.id);
-    res.status(200).render("../views/donations/update.ejs");
+    res.status(200).json(getDonation);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -70,5 +104,7 @@ module.exports = {
   updateDonation,
   deleteDonation,
   getDonation,
+  approve_donation,
+  decline_donation,
   //update,
 };
