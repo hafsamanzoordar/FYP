@@ -49,7 +49,7 @@ const login = async (req, res, next) => {
     res
       .cookie("access_token", token, {
         httpOnly: false,
-        sameSite: None,
+        sameSite: "none",
         secure: false,
       })
       .status(200)
