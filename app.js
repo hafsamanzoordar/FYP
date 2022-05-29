@@ -90,9 +90,7 @@ app.get("/api/adminDashboard", async (req, res) => {
   res.render("adminDashboard");
 });
 
-app.get("/api/account", (req, res) => {
-  res.render("./views/donations/upload.ejs");
-});
+app.use("/api/upload", express.static("uploads"));
 
 app.post("/api/upload", upload.single("image"), (req, res) => {
   console.log(req.file);
@@ -112,7 +110,7 @@ app.post("/api/upload", upload.single("image"), (req, res) => {
           _id: result._id,
           request: {
             type: "GET",
-            url: "http://localhost:3000/api/upload/" + result._id,
+            url: "https://fyp-2022.herokuapp.com/api/upload/" + result._id,
           },
         },
       });
