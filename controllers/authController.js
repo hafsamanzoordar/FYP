@@ -54,9 +54,7 @@ const login = async (req, res, next) => {
     //   })
     //   .status(200)
 
-    res
-      .json({ details: { ...otherDetails }, isAdmin, access_token: token })
-      .sendStatus(200);
+    res.json({ details: { ...otherDetails }, isAdmin, access_token: token });
   } catch (err) {
     next(err);
   }
