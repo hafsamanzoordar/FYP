@@ -5,7 +5,7 @@ const { verifyUser, verifyAdmin } = require("../utils/verifyToken.js");
 
 //router.get("/update", verifyAdmin, donationController.update);
 
-router.get("/update/:id", verifyAdmin, donationController.update);
+//router.get("/update/:id", verifyAdmin, donationController.update);
 
 router.get("/getDonation", verifyUser, donationController.getDonation);
 
