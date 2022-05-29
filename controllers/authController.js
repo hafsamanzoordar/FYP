@@ -2,6 +2,7 @@ const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 const createError = require("../utils/error");
 const jwt = require("jsonwebtoken");
+const nodemon = require("nodemon");
 
 const getRegister = async (req, res) => {
   res.render("SignUp");
@@ -49,6 +50,8 @@ const login = async (req, res, next) => {
     res
       .cookie("access_token", token, {
         httpOnly: false,
+        SameSite: None,
+        Domain: localhost,
       })
       .status(200)
 
