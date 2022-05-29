@@ -91,7 +91,7 @@ app.get("/api/adminDashboard", async (req, res) => {
 });
 
 app.get("/api/account", (req, res) => {
-  res.render("./donations/account");
+  res.render("./views/donations/upload.ejs");
 });
 
 app.post("/api/upload", upload.single("image"), (req, res) => {
