@@ -3,27 +3,15 @@ const router = express.Router();
 const whiteCollarReqController = require("../controllers/whiteCollarReqController");
 const { verifyUser, verifyAdmin } = require("../utils/verifyToken.js");
 
-router.get(
-  "/getWhiteCollarRequest",
-  verifyUser,
-  whiteCollarReqController.getCollarReq
-);
+router.get("/getWhiteCollarRequest", whiteCollarReqController.getCollarReq);
 
-router.get("/", verifyAdmin, whiteCollarReqController.whiteCollarReq_index);
+router.get("/", whiteCollarReqController.whiteCollarReq_index);
 
-router.post(
-  "/",
-  verifyUser,
-  whiteCollarReqController.whiteCollarReq_create_post
-);
+router.post("/", whiteCollarReqController.whiteCollarReq_create_post);
 
-router.get(
-  "/:id",
-  verifyAdmin,
-  whiteCollarReqController.whiteCollarReq_get_by_id
-);
+router.get("/:id", whiteCollarReqController.whiteCollarReq_get_by_id);
 
-router.put("/:id", verifyAdmin, whiteCollarReqController.updatewhiteCollarReq);
+router.put("/:id", whiteCollarReqController.updatewhiteCollarReq);
 
 router.delete(
   "/:id",

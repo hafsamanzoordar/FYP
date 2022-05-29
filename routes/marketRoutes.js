@@ -3,20 +3,20 @@ const router = express.Router();
 const marketController = require("../controllers/marketController");
 const { verifyUser, verifyAdmin } = require("../utils/verifyToken.js");
 
-router.get("/getMarket", verifyAdmin, marketController.getMarket);
+router.get("/getMarket", marketController.getMarket);
 
-router.get("/", verifyUser, marketController.market_index);
+router.get("/", marketController.market_index);
 
-router.get("/getByLocation", verifyUser, marketController.getByLocation);
+router.get("/getByLocation", marketController.getByLocation);
 
-router.get("/getByType", verifyUser, marketController.getByType);
+router.get("/getByType", marketController.getByType);
 
-router.post("/", verifyAdmin, marketController.market_create_post);
+router.post("/", marketController.market_create_post);
 
-router.get("/:id", verifyAdmin, marketController.market_get_by_id);
+router.get("/:id", marketController.market_get_by_id);
 
-router.put("/:id", verifyAdmin, marketController.updateMarket);
+router.put("/:id", marketController.updateMarket);
 
-router.delete("/:id", verifyAdmin, marketController.deleteMarket);
+router.delete("/:id", marketController.deleteMarket);
 
 module.exports = router;
