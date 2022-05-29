@@ -90,7 +90,7 @@ app.get("/api/adminDashboard", async (req, res) => {
   res.render("adminDashboard");
 });
 
-app.use("/api/upload", express.static("uploads"));
+app.use("./public/images", express.static("images"));
 
 app.post("/api/upload", upload.single("image"), (req, res) => {
   console.log(req.file);
