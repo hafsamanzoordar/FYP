@@ -52,7 +52,7 @@ const deletejanazaReq = async (req, res, next) => {
 const janazaReq_get_by_id = async (req, res) => {
   try {
     const getJanazaReq = await janazaReq.findById(req.params.id);
-    res.status(200).json(getJanazaReq);
+    res.status(200).render("../views/requests/janazaRequests/update.ejs");
   } catch (err) {
     res.status(500).json(err);
   }

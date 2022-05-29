@@ -52,7 +52,7 @@ const deletewhiteCollarReq = async (req, res, next) => {
 const whiteCollarReq_get_by_id = async (req, res) => {
   try {
     const getWhiteCollarReq = await Request.findById(req.params.id);
-    res.status(200).json(getWhiteCollarReq);
+    res.status(200).render("../views/requests/whiteCollarRequests/update.ejs");
   } catch (err) {
     res.status(500).json(err);
   }
