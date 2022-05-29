@@ -10,7 +10,9 @@ const { verifyUser, verifyAdmin } = require("../utils/verifyToken.js");
 router.get("/getDonation", donationController.getDonation);
 
 router.get("/", donationController.donation_index);
+
 router.get("/approve/:id", donationController.approve_donation);
+
 router.get("/decline/:id", donationController.decline_donation);
 
 router.post("/", donationController.donation_create_post);

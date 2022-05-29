@@ -7,6 +7,10 @@ router.get("/getJanazaRequest", janazaReqController.getjanazaReq);
 
 router.get("/", janazaReqController.janazaReq_index);
 
+router.get("/approve/:id", janazaReqController.approve_janaza);
+
+router.get("/decline/:id", janazaReqController.decline_janaza);
+
 router.post("/", janazaReqController.janazaReq_create_post);
 
 router.get("/:id", janazaReqController.janazaReq_get_by_id);

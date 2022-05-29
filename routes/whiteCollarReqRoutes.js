@@ -7,6 +7,10 @@ router.get("/getWhiteCollarRequest", whiteCollarReqController.getCollarReq);
 
 router.get("/", whiteCollarReqController.whiteCollarReq_index);
 
+router.get("/approve/:id", whiteCollarReqController.approve_collar);
+
+router.get("/decline/:id", whiteCollarReqController.decline_collar);
+
 router.post("/", whiteCollarReqController.whiteCollarReq_create_post);
 
 router.get("/:id", whiteCollarReqController.whiteCollarReq_get_by_id);

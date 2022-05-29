@@ -49,10 +49,45 @@ const deletejanazaReq = async (req, res, next) => {
   }
 };
 
+const approve_janaza = async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    const request = await janazaReq.findById(id);
+    if (request) {
+      request.status = "Approved";
+      console.log(request);
+      request.save();
+      return res.status(200);
+    } else {
+      return res.status(403);
+    }
+  } catch (error) {
+    console.log(error.message);
+    return res.sendStatus(403);
+  }
+};
+const decline_janaza = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const request = await janazaReq.findById(id);
+    if (request) {
+      request.status = "Declined";
+      request.save();
+      return res.status(200);
+    } else {
+      return res.status(403);
+    }
+  } catch (error) {
+    console.log(error.message);
+    return res.sendStatus(403);
+  }
+};
+
 const janazaReq_get_by_id = async (req, res) => {
   try {
     const getJanazaReq = await janazaReq.findById(req.params.id);
-    res.status(200).render("../views/requests/janazaRequests/update.ejs");
+    res.status(200).json(getJanazaReq);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -65,4 +100,6 @@ module.exports = {
   updatejanazaReq,
   deletejanazaReq,
   getjanazaReq,
+  approve_janaza,
+  decline_janaza,
 };

@@ -49,10 +49,45 @@ const deletewhiteCollarReq = async (req, res, next) => {
   }
 };
 
+const approve_collar = async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    const request = await janazaReq.findById(id);
+    if (request) {
+      request.status = "Approved";
+      console.log(request);
+      request.save();
+      return res.status(200);
+    } else {
+      return res.status(403);
+    }
+  } catch (error) {
+    console.log(error.message);
+    return res.sendStatus(403);
+  }
+};
+const decline_collar = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const request = await janazaReq.findById(id);
+    if (request) {
+      request.status = "Declined";
+      request.save();
+      return res.status(200);
+    } else {
+      return res.status(403);
+    }
+  } catch (error) {
+    console.log(error.message);
+    return res.sendStatus(403);
+  }
+};
+
 const whiteCollarReq_get_by_id = async (req, res) => {
   try {
     const getWhiteCollarReq = await Request.findById(req.params.id);
-    res.status(200).render("../views/requests/whiteCollarRequests/update.ejs");
+    res.status(200).json(getWhiteCollarReq);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -65,4 +100,6 @@ module.exports = {
   updatewhiteCollarReq,
   deletewhiteCollarReq,
   getCollarReq,
+  approve_collar,
+  decline_collar,
 };
