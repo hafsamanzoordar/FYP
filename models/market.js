@@ -21,10 +21,6 @@ const marketSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    availability: {
-      type: Boolean,
-      default: true,
-    },
   },
   { timestamps: true }
 );
