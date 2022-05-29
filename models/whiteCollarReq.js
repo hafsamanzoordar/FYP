@@ -28,9 +28,9 @@ const whiteCollarReqSchema = new mongoose.Schema(
     email: {
       type: String,
     },
-    DOB: {
-      type: Date,
-    },
+    //DOB: {
+    //type: Date,
+    //},
     address: {
       type: String,
       required: true,
@@ -47,10 +47,10 @@ const whiteCollarReqSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    status: {
-      type: String,
-      required: true,
-    },
+    //status: {
+    //type: String,
+    //required: true,
+    //},
     profession: {
       type: String,
       required: true,
@@ -74,9 +74,9 @@ const whiteCollarReqSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    matric_type: {
-      type: String,
-    },
+    //matric_type: {
+    //type: String,
+    //},
     matric_expenses: {
       type: Number,
       required: true,
@@ -93,9 +93,9 @@ const whiteCollarReqSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    intermediate_type: {
-      type: String,
-    },
+    //intermediate_type: {
+    //type: String,
+    //},
     intermediate_expenses: {
       type: Number,
       required: true,
@@ -116,10 +116,10 @@ const whiteCollarReqSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    property_type: {
-      type: String,
-      required: true,
-    },
+    //property_type: {
+    //type: String,
+    //required: true,
+    //},
   },
   { timestamps: true }
 );
