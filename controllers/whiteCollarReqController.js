@@ -53,7 +53,7 @@ const approve_collar = async (req, res) => {
   try {
     const id = req.params.id;
 
-    const request = await janazaReq.findById(id);
+    const request = await Request.findById(id);
     if (request) {
       request.status = "Approved";
       console.log(request);
@@ -70,7 +70,7 @@ const approve_collar = async (req, res) => {
 const decline_collar = async (req, res) => {
   try {
     const id = req.params.id;
-    const request = await janazaReq.findById(id);
+    const request = await Request.findById(id);
     if (request) {
       request.status = "Declined";
       request.save();
