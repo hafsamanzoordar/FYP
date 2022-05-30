@@ -15,14 +15,14 @@ const whiteCollarReqSchema = new mongoose.Schema(
       required: true,
     },
     cnic: {
-      type: Number,
+      type: String,
       required: true,
     },
     age: {
-      type: Number,
+      type: String,
     },
     phone: {
-      type: Number,
+      type: String,
       required: true,
     },
     email: {
@@ -44,7 +44,7 @@ const whiteCollarReqSchema = new mongoose.Schema(
       required: true,
     },
     fCnic: {
-      type: Number,
+      type: String,
       required: true,
     },
     //status: {
@@ -59,11 +59,11 @@ const whiteCollarReqSchema = new mongoose.Schema(
       type: String,
     },
     gross_monthly_income: {
-      type: Number,
+      type: String,
       required: true,
     },
     matric_year: {
-      type: Number,
+      type: String,
       required: true,
     },
     matric_institute: {
@@ -71,18 +71,18 @@ const whiteCollarReqSchema = new mongoose.Schema(
       required: true,
     },
     matric_percentage: {
-      type: Number,
+      type: String,
       required: true,
     },
     //matric_type: {
     //type: String,
     //},
     matric_expenses: {
-      type: Number,
+      type: String,
       required: true,
     },
     intermediate_year: {
-      type: Number,
+      type: String,
       required: true,
     },
     intermediate_institute: {
@@ -90,30 +90,30 @@ const whiteCollarReqSchema = new mongoose.Schema(
       required: true,
     },
     intermediate_percentage: {
-      type: Number,
+      type: String,
       required: true,
     },
     //intermediate_type: {
     //type: String,
     //},
     intermediate_expenses: {
-      type: Number,
+      type: String,
       required: true,
     },
     family_members: {
-      type: Number,
+      type: String,
       required: true,
     },
     earning_hands: {
-      type: Number,
+      type: String,
       required: true,
     },
     studying_siblings: {
-      type: Number,
+      type: String,
       required: true,
     },
     total_expenditure: {
-      type: Number,
+      type: String,
       required: true,
     },
     //property_type: {
