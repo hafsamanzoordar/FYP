@@ -51,10 +51,10 @@ const whiteCollarReqSchema = new mongoose.Schema(
     //type: String,
     //required: true,
     //},
-    profession: {
-      type: String,
-      required: true,
-    },
+    //profession: {
+    // type: String,
+    //   required: true,
+    // },
     company_name: {
       type: String,
     },
@@ -70,10 +70,10 @@ const whiteCollarReqSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    matric_percentage: {
-      type: String,
-      required: true,
-    },
+    // matric_percentage: {
+    //   type: String,
+    //   required: true,
+    // },
     //matric_type: {
     //type: String,
     //},
@@ -89,10 +89,10 @@ const whiteCollarReqSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    intermediate_percentage: {
-      type: String,
-      required: true,
-    },
+    // intermediate_percentage: {
+    //   type: String,
+    //   required: true,
+    // },
     //intermediate_type: {
     //type: String,
     //},
