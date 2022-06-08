@@ -17,10 +17,6 @@ router.get("/:id", whiteCollarReqController.whiteCollarReq_get_by_id);
 
 router.put("/:id", whiteCollarReqController.updatewhiteCollarReq);
 
-router.delete(
-  "/:id",
-  verifyAdmin,
-  whiteCollarReqController.deletewhiteCollarReq
-);
+router.delete("/:id", whiteCollarReqController.deletewhiteCollarReq);
 
 module.exports = router;

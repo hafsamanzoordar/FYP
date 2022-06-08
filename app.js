@@ -12,7 +12,13 @@ const express = require("express"),
   donationRoutes = require("./routes/donationRoutes"),
   whiteCollarReqRoutes = require("./routes/whiteCollarReqRoutes"),
   janazaReqRoutes = require("./routes/janazaReqRoutes"),
-  marketRoutes = require("./routes/marketRoutes");
+  marketRoutes = require("./routes/marketRoutes"),
+  auth = require("./utils/auth");
+
+app.post("/welcome", auth, (req, res) => {
+  res.status(200).send("Welcome 🙌 ");
+});
+
 //   Image = require("./models/image");
 
 // const storage = multer.diskStorage({
@@ -62,15 +68,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors());
 
-var allowCrossDomain = function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
-  res.header("Access-Control-Allow-Headers", "Content-Type");
-};
+// var allowCrossDomain = function (req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
+//   res.header("Access-Control-Allow-Headers", "Content-Type");
+// };
 
-app.configure(function () {
-  app.use(allowCrossDomain);
-});
+// app.configure(function () {
+//   app.use(allowCrossDomain);
+// });
 
 app.use(cookieParser());
 app.use(express.json());
