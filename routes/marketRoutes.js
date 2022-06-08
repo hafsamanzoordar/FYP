@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const marketController = require("../controllers/marketController");
-const { verifyUser, verifyAdmin } = require("../utils/verifyToken.js");
 
 router.get("/getMarket", marketController.getMarket);
 

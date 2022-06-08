@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const janazaReqController = require("../controllers/janazaReqController");
-const { verifyUser, verifyAdmin } = require("../utils/verifyToken.js");
 
 router.get("/getJanazaRequest", janazaReqController.getjanazaReq);
 
