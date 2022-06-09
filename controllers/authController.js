@@ -55,22 +55,26 @@ const register = async (req, res) => {
 const login = async (req, res, next) => {
   try {
     // Get user input
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
     // Validate user input
-    if (!(email && password)) {
+    if (!(password && username)) {
       res.status(400).send("All input is required");
     }
 
     // Validate if user exist in our database
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ username });
 
     if (user && (await bcrypt.compare(password, user.password))) {
       // Create token
 
-      const token = jwt.sign({ user_id: user._id, email }, process.env.secret, {
-        expiresIn: "1w",
-      });
+      const token = jwt.sign(
+        { user_id: user._id, username },
+        process.env.secret,
+        {
+          expiresIn: "1w",
+        }
+      );
 
       // user
 
