@@ -1,3 +1,5 @@
+const User = require("./models/user");
+
 const express = require("express"),
   app = express(),
   dotenv = require("dotenv"),
@@ -13,11 +15,12 @@ const express = require("express"),
   whiteCollarReqRoutes = require("./routes/whiteCollarReqRoutes"),
   janazaReqRoutes = require("./routes/janazaReqRoutes"),
   marketRoutes = require("./routes/marketRoutes"),
-  auth = require("./utils/auth");
+  auth = require("./utils/auth"),
+  jwt = require("jsonwebtoken");
 
-app.post("/welcome", auth, (req, res) => {
-  res.status(200).send("Welcome 🙌 ");
-});
+// app.post("/welcome", auth, (req, res) => {
+//   res.status(200).send("Welcome 🙌 ");
+// });
 
 //   Image = require("./models/image");
 
@@ -104,6 +107,25 @@ app.use((err, req, res, next) => {
 
 app.get("/api/adminDashboard", async (req, res) => {
   res.render("adminDashboard");
+});
+
+app.get("/api/userProfile", async (req, res) => {
+  if (req.header("x-access-token")) {
+    token = req.header("x-access-token");
+    jwt.verify(token, process.env.secret, async (err, decoded) => {
+      if (err) {
+        console.log(err.errorMessage);
+        return res.send(401).send("Invalid Token");
+      }
+      if (decoded) {
+        email = decoded.email;
+        user = await User.findOne({ email });
+        return res.status(200).send(user);
+      }
+    });
+  } else {
+    return res.send("No Token Found");
+  }
 });
 
 // app.use("./public/images", express.static("images"));

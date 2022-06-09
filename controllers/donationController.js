@@ -1,4 +1,6 @@
 const Donation = require("../models/donation");
+const jwt = require("jsonwebtoken");
+const User = require("../models/user");
 
 const getDonation = async (req, res) => {
   res.render("../views/donations/donation.ejs");
@@ -10,11 +12,32 @@ const getDonation = async (req, res) => {
 //};
 
 const donation_index = async (req, res, next) => {
-  try {
-    const donations = await Donation.find();
-    res.status(200).json(donations);
-  } catch (err) {
-    next(err);
+  if (req.header("x-access-token")) {
+    token = req.header("x-access-token");
+    jwt.verify(token, process.env.secret, async (err, decoded) => {
+      if (err) {
+        console.log(err);
+        res.status(401).send("Invalid token");
+      }
+      if (decoded) {
+        try {
+          email = decoded.email;
+          const user = await User.findOne({ email });
+          if (user.isAdmin) {
+            const donations = await Donation.find();
+            return res.status(200).send(donations);
+          } else {
+            const donations = await Donation.find({ email: email });
+            res.status(200).send(donations);
+          }
+        } catch (err) {
+          console.log(err.message);
+          next(err);
+        }
+      }
+    });
+  } else {
+    res.status(401).send("Token  Not Found");
   }
 };
 

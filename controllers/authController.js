@@ -1,7 +1,7 @@
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
-const createError = require("../utils/error");
 const jwt = require("jsonwebtoken");
+const secret = process.env.secret;
 
 //const getRegister = async (req, res) => {
 // res.render("SignUp");
@@ -40,19 +40,12 @@ const register = async (req, res) => {
     });
 
     // Create token
-    const token = jwt.sign(
-      { user_id: user._id, email },
-      process.env.access_token,
-      {
-        expiresIn: "2h",
-      }
-    );
-
-    // save user token
-    user.token = token;
+    const token = jwt.sign({ user_id: user._id, email }, process.env.secret, {
+      expiresIn: "2h",
+    });
 
     // return new user
-    res.status(201).json(user);
+    res.status(201).send("User Created");
   } catch (err) {
     console.log(err);
   }
@@ -74,23 +67,18 @@ const login = async (req, res, next) => {
 
     if (user && (await bcrypt.compare(password, user.password))) {
       // Create token
-      const token = jwt.sign(
-        { user_id: user._id, email },
-        process.env.access_token,
-        {
-          expiresIn: "2h",
-        }
-      );
 
-      // save user token
-      user.token = token;
+      const token = jwt.sign({ user_id: user._id, email }, process.env.secret, {
+        expiresIn: "2h",
+      });
 
       // user
-      res.status(200).json(user);
+
+      res.status(200).json({ token });
     }
-    res.status(400).send("Invalid Credentials");
   } catch (err) {
     console.log(err);
+    res.status(400).send("Invalid Credentials");
   }
   // Our login logic ends here
 };
