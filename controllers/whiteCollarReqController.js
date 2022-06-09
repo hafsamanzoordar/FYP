@@ -1,4 +1,5 @@
 const Request = require("../models/whiteCollarReq");
+const User = require("../models/user");
 
 const getCollarReq = async (req, res) => {
   res.render("../views/requests/whiteCollarRequests/whiteCollar.ejs");
@@ -6,9 +7,17 @@ const getCollarReq = async (req, res) => {
 
 const whiteCollarReq_index = async (req, res, next) => {
   try {
-    const whiteCollarReq = await Request.find();
-    res.status(200).json(whiteCollarReq);
+    email = req.user.email;
+    const user = await User.findOne({ email });
+    if (user.isAdmin) {
+      const reqs = await Request.find();
+      return res.status(200).send(reqs);
+    } else {
+      const reqs = await Request.find({ email: email });
+      res.status(200).send(reqs);
+    }
   } catch (err) {
+    console.log(err.message);
     next(err);
   }
 };

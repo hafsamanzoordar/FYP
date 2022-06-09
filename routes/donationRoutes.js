@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const donationController = require("../controllers/donationController");
+const verify = require("../utils/auth");
 
 router.get("/getDonation", donationController.getDonation);
 
-router.get("/", donationController.donation_index);
+router.get("/", verify, donationController.donation_index);
 
 router.get("/approve/:id", donationController.approve_donation);
 
