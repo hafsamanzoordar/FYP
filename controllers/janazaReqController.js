@@ -104,7 +104,6 @@ module.exports = {
   janazaReq_get_by_id,
   updatejanazaReq,
   deletejanazaReq,
-  getjanazaReq,
   approve_janaza,
   decline_janaza,
 };

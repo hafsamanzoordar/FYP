@@ -104,7 +104,6 @@ module.exports = {
   donation_get_by_id,
   updateDonation,
   deleteDonation,
-  getDonation,
   approve_donation,
   decline_donation,
 };
