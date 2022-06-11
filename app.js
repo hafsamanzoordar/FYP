@@ -78,10 +78,6 @@ app.use((err, req, res, next) => {
   return res.status(errorStatus).json(errorMessage);
 });
 
-app.get("/api/adminDashboard", async (req, res) => {
-  res.render("adminDashboard");
-});
-
 app.get("/api/userProfile", async (req, res) => {
   if (req.header("x-access-token")) {
     token = req.header("x-access-token");
