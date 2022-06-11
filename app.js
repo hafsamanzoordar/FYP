@@ -165,8 +165,15 @@ app.get("/api/userProfile", async (req, res) => {
 //     });
 // });
 
-app.get("/logout", (req, res) => {
+// Logout
+app.get("/logout", function (req, res) {
+  // remove the req.user property and clear the login session
   req.logout();
+
+  // destroy session data
+  req.session = null;
+
+  // redirect to homepage
   res.redirect("/");
 });
 
