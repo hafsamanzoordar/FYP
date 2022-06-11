@@ -1,9 +1,5 @@
 const Market = require("../models/market");
 
-const getMarket = async (req, res) => {
-  res.render("../views/market.ejs");
-};
-
 const market_index = async (req, res, next) => {
   try {
     const market = await Market.find();
@@ -94,5 +90,4 @@ module.exports = {
   deleteMarket,
   getByLocation,
   getByType,
-  getMarket,
 };

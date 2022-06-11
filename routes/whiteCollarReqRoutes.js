@@ -3,8 +3,6 @@ const router = express.Router();
 const whiteCollarReqController = require("../controllers/whiteCollarReqController");
 const verify = require("../utils/auth");
 
-router.get("/getWhiteCollarRequest", whiteCollarReqController.getCollarReq);
-
 router.get("/", verify, whiteCollarReqController.whiteCollarReq_index);
 
 router.get("/approve/:id", whiteCollarReqController.approve_collar);

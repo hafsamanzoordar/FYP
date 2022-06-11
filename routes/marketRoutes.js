@@ -2,8 +2,6 @@ const express = require("express");
 const router = express.Router();
 const marketController = require("../controllers/marketController");
 
-router.get("/getMarket", marketController.getMarket);
-
 router.get("/", marketController.market_index);
 
 router.get("/getByLocation", marketController.getByLocation);

@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const Image = require("./image");
 
 const marketSchema = new mongoose.Schema(
   {

@@ -1,10 +1,6 @@
 const janazaReq = require("../models/janazaReq");
 const User = require("../models/user");
 
-const getjanazaReq = async (req, res) => {
-  res.render("../views/requests/janazaRequests/janaza.ejs");
-};
-
 const janazaReq_index = async (req, res, next) => {
   try {
     email = req.user.email;
@@ -21,23 +17,6 @@ const janazaReq_index = async (req, res, next) => {
     next(err);
   }
 };
-
-// const ajanaza = async (req, res, next) => {
-//   try {
-//     email = req.user.email;
-//     const user = await User.findOne({ email });
-//     if (user.isAdmin) {
-//       const reqs = await janazaReq.find();
-//       return res.status(200).send(reqs);
-//     } else {
-//       const reqs = await janazaReq.find({ email: email });
-//       res.status(200).send(reqs);
-//     }
-//   } catch (err) {
-//     console.log(err.message);
-//     next(err);
-//   }
-// };
 
 const janazaReq_create_post = async (req, res) => {
   const newJanazaReq = new janazaReq(req.body);
@@ -128,5 +107,4 @@ module.exports = {
   getjanazaReq,
   approve_janaza,
   decline_janaza,
-  //ajanaza,
 };

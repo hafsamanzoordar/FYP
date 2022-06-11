@@ -3,11 +3,7 @@ const router = express.Router();
 const janazaReqController = require("../controllers/janazaReqController");
 const verify = require("../utils/auth");
 
-router.get("/getJanazaRequest", janazaReqController.getjanazaReq);
-
 router.get("/", verify, janazaReqController.janazaReq_index);
-
-// router.get("/test", verify, janazaReqController.ajanaza);
 
 router.get("/approve/:id", janazaReqController.approve_janaza);
 

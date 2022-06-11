@@ -1,10 +1,6 @@
 const Request = require("../models/whiteCollarReq");
 const User = require("../models/user");
 
-const getCollarReq = async (req, res) => {
-  res.render("../views/requests/whiteCollarRequests/whiteCollar.ejs");
-};
-
 const whiteCollarReq_index = async (req, res, next) => {
   try {
     email = req.user.email;
@@ -108,7 +104,6 @@ module.exports = {
   whiteCollarReq_get_by_id,
   updatewhiteCollarReq,
   deletewhiteCollarReq,
-  getCollarReq,
   approve_collar,
   decline_collar,
 };
