@@ -60,10 +60,6 @@ app.use(allowCrossDomain);
 app.use(cookieParser());
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.render("home");
-});
-
 app.use("/api/auth", authRoutes);
 
 app.use("/api/users", userRoutes);
