@@ -3,8 +3,7 @@ const User = require("../models/user");
 
 const donation_index = async (req, res, next) => {
   try {
-    user = req.user.email;
-    console.log(email);
+    email = req.user.email;
     const user = await User.findOne({ email });
     if (user.isAdmin) {
       const donations = await Donation.find();
