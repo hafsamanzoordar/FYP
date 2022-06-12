@@ -60,7 +60,7 @@ const approve_donation = async (req, res) => {
 
     const donation = await Donation.findById(id);
     if (donation) {
-      donation.status = "Approved";
+      donation.status = "Transferred";
       console.log(donation);
       donation.save();
       return res.status(200);
@@ -77,7 +77,7 @@ const decline_donation = async (req, res) => {
     const id = req.params.id;
     const donation = await Donation.findById(id);
     if (donation) {
-      donation.status = "Declined";
+      donation.status = "Not received";
       donation.save();
       return res.status(200);
     } else {
