@@ -31,7 +31,7 @@ const register = async (req, res) => {
     });
 
     // Create token
-    const token = jwt.sign({ user_id: user._id, email }, process.env.secret, {
+    token = jwt.sign({ user_id: user._id, email }, process.env.secret, {
       expiresIn: "1w",
     });
 
@@ -46,26 +46,22 @@ const register = async (req, res) => {
 const login = async (req, res, next) => {
   try {
     // Get user input
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
     // Validate user input
-    if (!(password && username)) {
+    if (!(password && email)) {
       res.status(400).send("All input is required");
     }
 
     // Validate if user exist in our database
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ email });
 
     if (user && (await bcrypt.compare(password, user.password))) {
       // Create token
 
-      const token = jwt.sign(
-        { user_id: user._id, username },
-        process.env.secret,
-        {
-          expiresIn: "1w",
-        }
-      );
+      const token = jwt.sign({ user_id: user._id, email }, process.env.secret, {
+        expiresIn: "1w",
+      });
 
       // user
 

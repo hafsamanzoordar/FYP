@@ -1,10 +1,10 @@
 const Donation = require("../models/donation");
-const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 
 const donation_index = async (req, res, next) => {
   try {
-    username = req.user.username;
+    user = req.user.email;
+    console.log(email);
     const user = await User.findOne({ email });
     if (user.isAdmin) {
       const donations = await Donation.find();

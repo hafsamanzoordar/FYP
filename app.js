@@ -14,6 +14,8 @@ const express = require("express"),
   janazaReqRoutes = require("./routes/janazaReqRoutes"),
   marketRoutes = require("./routes/marketRoutes"),
   jwt = require("jsonwebtoken");
+const verify = require("./utils/auth");
+
 // multer = require("multer"),
 // GridFsStorage = require("multer-gridfs-storage");
 
@@ -80,7 +82,7 @@ app.use((err, req, res, next) => {
   return res.status(errorStatus).json(errorMessage);
 });
 
-app.get("/api/userProfile", async (req, res) => {
+app.get("/api/userProfile", verify, async (req, res) => {
   if (req.header("x-access-token")) {
     token = req.header("x-access-token");
     jwt.verify(token, process.env.secret, async (err, decoded) => {
@@ -90,7 +92,7 @@ app.get("/api/userProfile", async (req, res) => {
       }
       if (decoded) {
         email = decoded.email;
-        user = await User.findOne({ email });
+        const user = await User.findOne({ email });
         return res.status(200).send(user);
       }
     });
