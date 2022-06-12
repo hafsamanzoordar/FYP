@@ -3,13 +3,13 @@ const User = require("../models/user");
 
 const janazaReq_index = async (req, res, next) => {
   try {
-    email = req.user.email;
-    const user = await User.findOne({ email });
+    username = req.user.username;
+    const user = await User.findOne({ username });
     if (user.isAdmin) {
       const reqs = await janazaReq.find();
       return res.status(200).send(reqs);
     } else {
-      const reqs = await janazaReq.find({ email: email });
+      const reqs = await janazaReq.find({ username: username });
       res.status(200).send(reqs);
     }
   } catch (err) {

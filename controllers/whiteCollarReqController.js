@@ -3,13 +3,13 @@ const User = require("../models/user");
 
 const whiteCollarReq_index = async (req, res, next) => {
   try {
-    email = req.user.email;
-    const user = await User.findOne({ email });
+    username = req.user.username;
+    const user = await User.findOne({ username });
     if (user.isAdmin) {
       const reqs = await Request.find();
       return res.status(200).send(reqs);
     } else {
-      const reqs = await Request.find({ email: email });
+      const reqs = await Request.find({ username: username });
       res.status(200).send(reqs);
     }
   } catch (err) {
