@@ -78,7 +78,7 @@ app.use((err, req, res, next) => {
   return res.status(errorStatus).json(errorMessage);
 });
 
-app.get("/api/userProfile", verify, async (req, res) => {
+app.get("/api/userProfile", async (req, res) => {
   if (req.header("x-access-token")) {
     token = req.header("x-access-token");
     jwt.verify(token, process.env.secret, async (err, decoded) => {
@@ -94,6 +94,19 @@ app.get("/api/userProfile", verify, async (req, res) => {
     });
   } else {
     return res.send("No Token Found");
+  }
+});
+
+app.put("/api/userProfile/:id", verify, async (req, res, next) => {
+  try {
+    const updatedProfile = await User.findByIdAndUpdate(
+      req.params.id,
+      { $set: req.body },
+      { new: true }
+    );
+    res.status(200).json(updatedProfile);
+  } catch (err) {
+    next(err);
   }
 });
 
