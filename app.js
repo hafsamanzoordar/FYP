@@ -16,8 +16,7 @@ const express = require("express"),
   jwt = require("jsonwebtoken");
 const verify = require("./utils/auth");
 
-// multer = require("multer"),
-// GridFsStorage = require("multer-gridfs-storage");
+import { storage } from "./firebase";
 
 //connect to mongodb and listen for requests
 const dbURI =
@@ -53,7 +52,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 var allowCrossDomain = function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
   res.header("Access-Control-Allow-Headers", "Content-Type");
   next();
