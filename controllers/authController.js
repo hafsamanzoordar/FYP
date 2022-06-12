@@ -31,9 +31,7 @@ const register = async (req, res) => {
     });
 
     // Create token
-    token = jwt.sign({ user_id: user._id, email }, process.env.secret, {
-      expiresIn: "1w",
-    });
+    token = jwt.sign({ user_id: user._id, email }, process.env.secret);
 
     // return new user
     res.status(201).send("User Created");
