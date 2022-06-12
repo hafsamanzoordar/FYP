@@ -14,6 +14,8 @@ const express = require("express"),
   janazaReqRoutes = require("./routes/janazaReqRoutes"),
   marketRoutes = require("./routes/marketRoutes"),
   jwt = require("jsonwebtoken");
+// multer = require("multer"),
+// GridFsStorage = require("multer-gridfs-storage");
 
 //connect to mongodb and listen for requests
 const dbURI =
