@@ -16,8 +16,6 @@ const express = require("express"),
   jwt = require("jsonwebtoken");
 const verify = require("./utils/auth");
 
-import { storage } from "./firebase";
-
 //connect to mongodb and listen for requests
 const dbURI =
   "mongodb+srv://admin:hafsa123@cluster0.xzwka.mongodb.net/?retryWrites=true&w=majority";
