@@ -5,12 +5,12 @@ const User = require("../models/user");
 const donation_index = async (req, res, next) => {
   try {
     username = req.user.username;
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ email });
     if (user.isAdmin) {
       const donations = await Donation.find();
       return res.status(200).send(donations);
     } else {
-      const donations = await Donation.find({ username: username });
+      const donations = await Donation.find({ email: email });
       res.status(200).send(donations);
     }
   } catch (err) {

@@ -89,8 +89,8 @@ app.get("/api/userProfile", async (req, res) => {
         return res.send(401).send("Invalid Token");
       }
       if (decoded) {
-        username = decoded.username;
-        user = await User.findOne({ username });
+        email = decoded.email;
+        user = await User.findOne({ email });
         return res.status(200).send(user);
       }
     });
