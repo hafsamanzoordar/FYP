@@ -20,6 +20,11 @@ const marketSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
+    rate:
+    {
+      type:String,
+      required:true,
+    }
   },
   { timestamps: true }
 );
