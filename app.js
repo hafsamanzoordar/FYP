@@ -1,5 +1,7 @@
 const User = require("./models/user");
-
+const Donations = require("./models/donation");
+const janaza = require("./models/janazaReq");
+const collar = require("./models/whiteCollarReq");
 const express = require("express"),
   app = express(),
   dotenv = require("dotenv"),
@@ -108,6 +110,42 @@ app.put("/api/userProfile/:id", verify, async (req, res, next) => {
   } catch (err) {
     next(err);
   }
+});
+
+app.get("/api/donationRecord", async (req, res) => {
+  const data = await Donations.aggregate([
+    {
+      $group: {
+        _id: "$category",
+        total: { $sum: "$amount" },
+      },
+    },
+  ]);
+  res.send(data);
+});
+
+app.get("/api/janazaRecord", async (req, res) => {
+  const data = await janaza.aggregate([
+    {
+      $group: {
+        _id: "$email",
+        total: { $sum: "$amount" },
+      },
+    },
+  ]);
+  res.send(data);
+});
+
+app.get("/api/collarRecord", async (req, res) => {
+  const data = await collar.aggregate([
+    {
+      $group: {
+        _id: "$email",
+        total: { $sum: "$amount" },
+      },
+    },
+  ]);
+  res.send(data);
 });
 
 // Logout
