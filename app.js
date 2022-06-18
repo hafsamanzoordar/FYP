@@ -16,6 +16,7 @@ const express = require("express"),
   janazaReqRoutes = require("./routes/janazaReqRoutes"),
   marketRoutes = require("./routes/marketRoutes"),
   transactionRoutes = require("./routes/transRoutes"),
+  memberRoutes = require("./routes/memberRoutes"),
   jwt = require("jsonwebtoken");
 const verify = require("./utils/auth");
 
@@ -76,6 +77,8 @@ app.use("/api/janazaRequests", janazaReqRoutes);
 app.use("/api/markets", marketRoutes);
 
 app.use("/api/transactions", transactionRoutes);
+
+app.use("/api/", memberRoutes);
 
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;
