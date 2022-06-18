@@ -15,6 +15,7 @@ const express = require("express"),
   whiteCollarReqRoutes = require("./routes/whiteCollarReqRoutes"),
   janazaReqRoutes = require("./routes/janazaReqRoutes"),
   marketRoutes = require("./routes/marketRoutes"),
+  transactionRoutes = require("./routes/transRoutes"),
   jwt = require("jsonwebtoken");
 const verify = require("./utils/auth");
 
@@ -73,6 +74,8 @@ app.use("/api/whiteCollarRequests", whiteCollarReqRoutes);
 app.use("/api/janazaRequests", janazaReqRoutes);
 
 app.use("/api/markets", marketRoutes);
+
+app.use("/api/transactions", transactionRoutes);
 
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;
