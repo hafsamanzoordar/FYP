@@ -134,7 +134,7 @@ app.get("/api/janazaRecord", async (req, res) => {
   const data = await janaza.aggregate([
     {
       $group: {
-        _id: "$email",
+        _id: null,
         total: { $sum: "$amount" },
       },
     },
@@ -146,7 +146,7 @@ app.get("/api/collarRecord", async (req, res) => {
   const data = await collar.aggregate([
     {
       $group: {
-        _id: "$email",
+        _id: null,
         total: { $sum: "$amount" },
       },
     },
