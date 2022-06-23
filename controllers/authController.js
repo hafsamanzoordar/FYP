@@ -28,6 +28,8 @@ const register = async (req, res) => {
       username,
       email: email.toLowerCase(), // sanitize: convert email to lowercase
       password: encryptedPassword,
+      phone,
+      gender
     });
 
     // Create token
