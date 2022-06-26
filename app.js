@@ -19,6 +19,7 @@ const express = require("express"),
   memberRoutes = require("./routes/memberRoutes"),
   jwt = require("jsonwebtoken");
 const verify = require("./utils/auth");
+const Donation = require("./models/donation");
 
 //connect to mongodb and listen for requests
 const dbURI =
@@ -96,8 +97,22 @@ app.get("/api/userProfile", async (req, res) => {
       }
       if (decoded) {
         email = decoded.email;
-        const user = await User.findOne({ email });
-        return res.status(200).send(user);
+        const user = await User.findOne({ email }).select(
+          "username email gender phone"
+        );
+        const donations = await Donation.aggregate([
+          { $match: { email: "qwer@h.com" } },
+          {
+            $group: {
+              _id: "$email",
+              total: { $sum: "$amount" },
+            },
+          },
+        ]);
+
+        return res
+          .status(200)
+          .send({ ...user?._doc, donatedAmount: donations[0]?.total });
       }
     });
   } else {

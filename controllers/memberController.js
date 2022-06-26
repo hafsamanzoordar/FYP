@@ -1,7 +1,7 @@
 const Donation = require("../models/donation");
 
-const goldMember = async (req, res, next) => {
-  const data = await Donation.aggregate([
+const members = async (req, res, next) => {
+  const goldMembers = await Donation.aggregate([
     {
       $group: {
         _id: "$email",
@@ -12,11 +12,7 @@ const goldMember = async (req, res, next) => {
       $match: { total: { $gte: 100000 } },
     },
   ]);
-  res.send(data);
-};
-
-const silverMember = async (req, res, next) => {
-  const data = await Donation.aggregate([
+  const silverMembers = await Donation.aggregate([
     {
       $group: {
         _id: "$email",
@@ -27,11 +23,7 @@ const silverMember = async (req, res, next) => {
       $match: { total: { $gte: 50000, $lt: 100000 } },
     },
   ]);
-  res.send(data);
-};
-
-const bronzeMember = async (req, res, next) => {
-  const data = await Donation.aggregate([
+  const bronzeMembers = await Donation.aggregate([
     {
       $group: {
         _id: "$email",
@@ -42,7 +34,56 @@ const bronzeMember = async (req, res, next) => {
       $match: { total: { $gte: 25000, $lt: 50000 } },
     },
   ]);
-  res.send(data);
+  res.send({ goldMembers, bronzeMembers, silverMembers });
 };
 
-module.exports = { goldMember, silverMember, bronzeMember };
+// const silverMember = async (req, res, next) => {
+//   const data = await Donation.aggregate([
+//     {
+//       $group: {
+//         _id: "$email",
+//         total: { $sum: "$amount" },
+//       },
+//     },
+//     {
+//       $match: { total: { $gte: 50000, $lt: 100000 } },
+//     },
+//   ]);
+//   res.send(data);
+// };
+
+// const bronzeMember = async (req, res, next) => {
+//   const data = await Donation.aggregate([
+//     {
+//       $group: {
+//         _id: "$email",
+//         total: { $sum: "$amount" },
+//       },
+//     },
+//     {
+//       $match: { total: { $gte: 25000, $lt: 50000 } },
+//     },
+//   ]);
+//   res.send(data);
+// };
+
+// const showMemberStatus = async (req, res, next) => {
+//   const data = await Donation.aggregate([
+//     {
+//       $group: {
+//         _id: "$email",
+//         total: { $sum: "$amount" },
+//       },
+//     },
+//     {
+//       $cond: [
+//         { $gte: ["$total", 100000] },
+//         res.send("Gold Member"),
+//         res.send("Silver Member"),
+//       ],
+//     },
+//   ]);
+//   //res.send(data);
+// };
+
+module.exports = { members };
