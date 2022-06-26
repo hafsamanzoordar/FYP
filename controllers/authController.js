@@ -5,10 +5,10 @@ const jwt = require("jsonwebtoken");
 const register = async (req, res) => {
   try {
     // Get user input
-    const { username, email, password } = req.body;
+    const { username, email, password, phone, gender } = req.body;
 
     // Validate user input
-    if (!(email && password && username)) {
+    if (!(email && password && username && phone && gender)) {
       res.status(400).send("All input is required");
     }
 
@@ -28,6 +28,8 @@ const register = async (req, res) => {
       username,
       email: email.toLowerCase(), // sanitize: convert email to lowercase
       password: encryptedPassword,
+      phone,
+      gender
     });
 
     // Create token
