@@ -101,7 +101,7 @@ app.get("/api/userProfile", async (req, res) => {
           "username email gender phone"
         );
         const donations = await Donation.aggregate([
-          { $match: { email: "qwer@h.com" } },
+          { $match: { email: user?.email } },
           {
             $group: {
               _id: "$email",
@@ -109,10 +109,14 @@ app.get("/api/userProfile", async (req, res) => {
             },
           },
         ]);
-
-        return res
-          .status(200)
-          .send({ ...user?._doc, donatedAmount: donations[0]?.total });
+        let membership = "Standard Member";
+        if (donations[0]?.total >= 100000) membership = "Gold Member";
+        else if (donations[0]?.total >= 50000) membership = "Silver Member";
+        else if (donations[0]?.total >= 25000) membership = "Bronze Member";
+        return res.status(200).send({
+          ...user?._doc,
+          membership,
+        });
       }
     });
   } else {
